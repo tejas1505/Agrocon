@@ -1,0 +1,38 @@
+{
+    "name": "Agrocon Net System",
+    "short_name": "Agrocon",
+    "description":"Smart IoT based Web Apllication",
+    "start_url": "/",
+    "scope":"/",
+    "id":"/",
+    "display": "fullscreen",
+    "background_color": "#fdfdfd",
+    "theme_color": "#2659cebe",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "static/Logo192x192.png",
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "any"
+        },
+        {
+            "src": "static/Logo512x512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any"
+        },
+        {
+            "src": "static/Logo44x44.png",
+            "type": "image/png",
+            "sizes": "44x44",
+            "purpose": "any"
+        },
+        {
+            "src": "static/Logo144x144.png",
+            "type": "image/png",
+            "sizes": "144x144",
+            "purpose": "any"
+        }
+    ]
+}
