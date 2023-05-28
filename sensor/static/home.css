@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&display=swap');
+
+* {
+    font-family: 'Baloo Bhaijaan 2', cursive;
+}
+
+body {
+    padding: 0;
+    margin: 0px;
+}
+
+.navbar {
+    margin: 0px;
+    background-color: rgb(76, 131, 76);
+    color: white;
+    display: flex;
+    border: 1px solid green;
+    position: relative;
+}
+.navbar h1{
+    font-size:32px;
+    margin: 25px;
+}
+
+.logout button {
+    display: flex;
+    position: absolute;
+    padding: 5px;
+    font-size: 18px;
+    right: 100px;
+    justify-content: center;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 11px;
+    border-radius: 5px;
+    background-color: green;
+    transition: 0.25s;
+}
+
+.logout button:hover {
+    background-color: white;
+    cursor: pointer;
+    color: green;
+}
+
+.logout h5 {
+    display: flex;
+    position: absolute;
+    right: 250px;
+    margin: 0px;
+}
+
+.logout {
+    margin: 30px auto;
+    list-style-type: none;
+}
+
+.cards {
+    /* border: 1px solid black; */
+    justify-content: center;
+    margin: 100px auto;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.card {
+    display: flex;
+    margin: 10px auto;
+    background-color: #ffff;
+    padding: 10px;
+    flex-direction: column;
+    box-shadow: 0px 0px 8px 3px #b6b1b1;
+    /* border: 1px solid red; */
+    height: auto;
+    width: 390px;
+}
+.card p{
+    margin: 1px auto;
+}
+
+.card1 {
+    margin: 15px 0px;
+    width: 100%;
+    font-size: 18px;
+    border: none;
+    background-color: green;
+    color: white;
+    padding: 3px;
+    transition: 0.25s;
+}
+
+.card1:hover {
+    cursor: pointer;
+    background-color: rgba(0, 128, 0, 0.655);
+}

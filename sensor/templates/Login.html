@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{% static 'login.css' %}"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+
+    <title>Login!</title>
+</head>
+<style>
+    .body .container {
+        width: 50%;
+        margin-top: 40px;
+        border: 1px solid grey;
+        border-radius: 10px;
+        padding: 40px;
+    }
+
+    .body .container h2 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .form-outline input {
+        border: 1px solid black;
+    }
+
+    .message li {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        border: 1px solid red;
+        border-radius: 5px;
+        background-color: rgba(255, 0, 0, 0.707);
+        color: #fff;
+        font-size: 18px;
+        animation-name: message;
+        animation-duration: 1s;
+        position: relative;
+        animation-iteration-count: 1;
+        height: 23px;
+        list-style-type: none;
+
+    }
+
+    .message {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    @keyframes message {
+        from {
+            height: 0px;
+        }
+
+        to {
+            height: 23px;
+        }
+    }
+
+    img {
+        height: 13px;
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Agrocon Net System</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="body">
+        {% load static %}
+        <div class="container">
+            <h2>Login!</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {% if messages %}
+                <ul class="alert alert-danger">
+                    {% for message in messages %}
+                    <li><img src="{% static 'errorlogo.png' %}"> {{ message }}</li>
+                </ul>
+
+                {% endfor %}
+                {% endif %}
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <input type="text" name="login_username" id="form1Example1" class="form-control" autocomplete="off" />
+                    <label class="form-label" for="form1Example1">Username</label>
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <input type="password" name="login_password" id="form1Example2" class="form-control" />
+                    <label class="form-label" for="form1Example2">Password</label>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

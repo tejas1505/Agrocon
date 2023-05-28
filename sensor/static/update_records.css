@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&display=swap');
+
+* {
+    font-family: 'Baloo Bhaijaan 2', cursive;
+}
+
+body {
+    padding: 0;
+    margin: 0px;
+    /* background:url("background2.jpg") no-repeat; */
+}
+
+.navbar {
+    margin: 0px;
+    background-color: rgb(76, 131, 76);
+    color: white;
+    display: flex;
+    border: 1px solid green;
+    position: relative;
+}
+
+.home button {
+    display: flex;
+    position: absolute;
+    padding: 5px;
+    font-size: 18px;
+    right: 120px;
+    justify-content: center;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 11px;
+    border-radius: 5px;
+    background-color: green;
+    transition: 0.25s;
+}
+
+.home button:hover {
+    background-color: white;
+    cursor: pointer;
+    color: green;
+}
+
+.home h5 {
+    display: flex;
+    position: absolute;
+    right: 290px;
+    margin: 0px;
+}
+
+.home {
+    margin: 10px auto;
+    list-style-type: none;
+}
+
+.logout button {
+    display: flex;
+    position: absolute;
+    font-size: 18px;
+    right: 10px;
+    justify-content: center;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 11px;
+    border-radius: 5px;
+    background-color: green;
+    transition: 0.25s;
+}
+
+.logout button:hover {
+    background-color: white;
+    cursor: pointer;
+    color: green;
+}
+
+.logout h5 {
+    display: flex;
+    position: absolute;
+    right: 250px;
+    margin: 0px;
+}
+
+.logout {
+
+    margin: 20px auto;
+    list-style-type: none;
+}
+
+.message li {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 1px solid rgb(3, 186, 3);
+    border-radius: 5px;
+    background-color: rgba(3, 186, 3, 0.795);
+    color: #fff;
+    font-size: 18px;
+    animation-name: message;
+    animation-duration: 1s;
+    position: relative;
+    animation-iteration-count: 1;
+    height: 23px;
+    width: 50%;
+    padding: 3px;
+    list-style-type: none;
+
+}
+
+@keyframes message {
+    from {
+        height: 0px;
+    }
+
+    to {
+        height: 23px;
+    }
+}
+
+.message {
+    padding: 0px;
+    margin: 0px;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    opacity: 0;
+}
+
+td {
+    margin: 55px;
+    padding: 6px;
+}
+
+input {
+    width: 95%;
+}
+
+select {
+    width: 100%;
+}
+
+input,
+select {
+    background:transparent;
+    border: 2px solid black;
+    /* color: white; */
+    padding: 5px;
+    font-size: 16px;
+}
+
+option{
+    color: black;
+}
+
+input:focus{
+    outline:none;
+}
+
+.container {
+    background-color: white;
+    box-shadow: 0px 0px 8px 3px #b6b1b1;
+    /* border: 1px solid red; */
+    margin: 50px auto;
+    /* background-image: url("background2.jpg"); */
+    background-size: cover;
+    /* color: white; */
+    padding: 50px;
+    width: 50%;
+
+}
+
+.submit {
+    width: 70%;
+    padding: 5px;
+    background-color: green;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: 0.25s;
+}
+
+.clear {
+    width: 50%;
+    padding: 5px;
+    font-size: 18px;
+    border: 0;
+    border-radius: 5px;
+    transition: 0.25s;
+}
+
+.submit:hover {
+    cursor: pointer;
+    background-color: rgba(1, 163, 1, 0.74);
+}
+
+.clear:hover {
+    cursor: pointer;
+    background-color: #ccc;
+}

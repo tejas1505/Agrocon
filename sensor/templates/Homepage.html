@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+    {% load pwa %}
+    {% progressive_web_app_meta %}
+    <!-- MDB -->
+    <link rel="manifest" href="manifest.json">
+    <title>Homepage</title>
+    <!-- <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&family=Roboto:wght@300&display=swap');
+
+        * {
+            font-family: 'Baloo Bhaijaan 2', cursive;
+        }
+
+        body {
+            padding: 0;
+            margin: 0px;
+            background-color: rgb(222, 220, 220);
+        }
+
+        .navbar {
+            margin: 0px;
+            background-color: rgb(76, 131, 76);
+            color: white;
+            display: flex;
+            border: 1px solid green;
+            position: relative;
+        }
+
+        .navbar h1 {
+            margin: 20px auto;
+            font-size: 35px;
+        }
+
+        .btn {
+            padding: 10px 110px;
+            font-size: 28px;
+            color: white;
+            border: 0px;
+            border-radius: 10px;
+            /* box-shadow: 0px 0px 8px 3px #35fa04; */
+            background-color: green;
+            transition: 0.25s;
+        }
+
+        .btn:hover {
+            box-shadow: 0px 0px 5px 1px #29aa09;
+            /* border: 2px solid #29aa09; */
+            background-color: green;
+            cursor: pointer;
+        }
+
+        .container {
+            margin: 50px auto;
+            width: 50%;
+            /* border: 1px solid red; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: white;
+            box-shadow: 0px 0px 8px 3px #ccc;
+            padding: 20px;
+        }
+
+        .container h3 {
+            margin: 10px auto;
+        }
+    </style> -->
+    <style>
+        .cards,
+        .card {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand me-2" href="/">AgroNet System 
+            
+        </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarButtonsExample"
+        aria-controls="navbarButtonsExample"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+      <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/108px-Hamburger_icon.svg.png"
+      height="16"
+      alt="MDB Logo"
+      loading="lazy"
+      style="margin-top: -1px;"
+    />
+      </button>
+      <div class="collapse navbar-collapse" id="navbarButtonsExample">
+  
+        <div class="d-flex align-items-center">
+          <button type="button" class="btn btn-link px-3 me-2">
+            <a  href="{% url 'Login' %}">Login</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+    <div class="container">
+        <h3 style="display:flex; justify-content:center;margin:15px;">Poly House</h3>
+        <div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://kj1bcdn.b-cdn.net/media/41273/polyhouse.png?width=1200" class="d-block w-100"
+                        alt="Wild Landscape" />
+                </div>
+                <div class="carousel-item">
+                    <img src="https://gardeningtips.in/wp-content/uploads/2022/01/Polyhouse-Growing2-1024x684.jpg"
+                        class="d-block w-100" alt="Camera" />
+                </div>
+                <div class="carousel-item">
+                    <img src="https://thumbs.dreamstime.com/b/young-indian-farmer-showing-smartphone-polyhouse-greenhouse-young-indian-farmer-showing-smartphone-polyhouse-220517755.jpg"
+                        class="d-block w-100" alt="Exotic Fruits" />
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls"
+                data-mdb-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls"
+                data-mdb-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <a href="{% url 'Login' %}"><button class="btn"
+                style="display:flex; justify-content:center; margin:10px;">Login</button></a>
+        <div class="cards">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">About</h5>
+                    <p class="card-text">Smart IoT based website that helps to Control and Monitor Sensors present in
+                        polyhouse. Sensors present in polyhouse shows the values of Soil Moisture, temperature and
+                        Humidity</p>
+                    {% comment %} <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a> {% endcomment %}
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Smart IoT Based</h5>
+                    <p class="card-text">With the help of Sensors Information are easily available. Therefore, whole
+                        system of polyhouse can automated. We are using NodeMCU for taking values sensors.</p>
+                    {% comment %} <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a> {% endcomment %}
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Sensors</h5>
+                    <p class="card-text">There are two Sensors used in Polyhouse Soil Moisture and Tmperature-Humidity
+                        Sensors.</p>
+                    {% comment %} <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/html">
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('{% url "sw" %}')
+            .then(function (reg) {
+                console.log("service worker registered");
+            }).catch(function (err) {
+                console.log("error: ", err)
+            });
+    }
+
+
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
+
+</html>

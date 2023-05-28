@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>{% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{% static 'home.css' %}"> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+    <title>Home</title>
+<style>
+    h2{
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+    }
+</style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <!-- Container wrapper -->
+        <div class="container">
+            <a class="navbar-brand me-2" href="/">AgroNet System 
+            
+            </a>
+
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/108px-Hamburger_icon.svg.png"
+      height="16"
+      alt="MDB Logo"
+      loading="lazy"
+      style="margin-top: -1px;"
+    />
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                <!-- Left links -->
+
+                <div class="d-flex align-items-center">
+                    <a href="{% url 'Dashboard' %}"><button class="btn btn-link px-3 me-2">Register Device</button></a>
+                    <a href="{% url 'DailyRecords' %}"><button class="btn btn-link px-3 me-2">Update Records</button></a>
+                    <a href="{% url 'Reports' %}"><button class="btn btn-link px-3 me-2">Reports</button></a>
+                    <a href="{% url 'charts' %}"><button class="btn btn-link px-3 me-2">Charts</button></a>
+                    <a href="{% url 'logoutuser' %}"><button class="btn btn-link px-3 me-2">Sign Out</button></a>
+
+                </div>
+            </div>
+            <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <h2>Welcome APCOER</h2>
+    <div class="container" style="width: 100%;display: flex;
+    justify-content: center;background-color: black;max-width: none;">
+        <div id="map" style="width:1000px; height:580px;"></div>
+    </div>
+    <!-- Navbar -->
+    <!-- <div class="cards">
+        {% load static %}
+        <div class="card">
+            <img src="{% static 'register.jpg' %}" alt="plant"
+                style="display: flex; flex-direction:column;width:100%; height:220px;">
+            <a href="{% url 'Dashboard' %}"><button class="card1">Device Registration</button></a>
+            <p>Register Your Sensor to Plant.</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'dailyrec.jpg' %}" alt="plant"
+                style="display: flex; flex-direction:column;width:100%; height:220px;">
+            <a href="{% url 'DailyRecords' %}"><button class="card1">Update Daily Records</button></a>
+            <p>Update Daily Sensor Values of Plants</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'reports.png' %}" alt="plant"
+                style="display: flex; flex-direction:column;width:100%; height:220px;">
+            <a href="{% url 'Reports' %}"><button class="card1">Reports</button></a>
+            <p>View All Records of All Sensors of Particular Plant</p>
+        </div>
+    </div> -->
+</body>
+<script>
+    var map = L.map('map').setView([18.490748946232117, 73.84340456086933], 35);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    var marker = L.marker([18.490748946232117, 73.84340456086933]).addTo(map)
+        .bindPopup('<b>APCOER</b><br />POLYHOUSE').openPopup();
+    var len = '{{length}}';
+</script>
+
+</html>

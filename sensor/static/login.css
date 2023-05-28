@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&display=swap');
+
+* {
+    font-family: 'Baloo Bhaijaan 2', cursive;
+}
+
+body {
+    /* background: url("backgroundphoto.jpg") no-repeat; */
+    background-size: 100%;
+}
+
+
+.message li {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 1px solid red;
+    border-radius: 5px;
+    background-color: rgba(255, 0, 0, 0.707);
+    color: #fff;
+    font-size: 18px;
+    animation-name: message;
+    animation-duration: 1s;
+    position: relative;
+    animation-iteration-count: 1;
+    height: 23px;
+    list-style-type: none;
+
+}
+
+.message {
+    padding: 0px;
+    margin: 0px;
+}
+
+@keyframes message {
+    from {
+        height: 0px;
+    }
+
+    to {
+        height: 23px;
+    }
+}
+
+img {
+    height: 13px;
+}

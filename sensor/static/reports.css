@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&display=swap');
+
+* {
+    font-family: 'Baloo Bhaijaan 2', cursive;
+}
+
+body {
+    padding: 0;
+    margin: 0px;
+    background-color: rgb(222, 220, 220);
+}
+
+.navbar {
+    margin: 0px;
+    background-color: rgb(76, 131, 76);
+    color: white;
+    display: flex;
+    border: 1px solid green;
+    position:relative;
+    /* position: fixed;
+    top: 0px;
+    width: 100%; */
+}
+
+.home button {
+    display: flex;
+    position: absolute;
+    padding: 5px;
+    font-size: 18px;
+    right: 120px;
+    justify-content: center;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 11px;
+    border-radius: 5px;
+    background-color: green;
+    transition: 0.25s;
+}
+
+.home button:hover {
+    background-color: white;
+    cursor: pointer;
+    color: green;
+}
+
+.home h5 {
+    display: flex;
+    position: absolute;
+    right: 290px;
+    margin: 0px;
+}
+
+.home {
+    margin: 10px auto;
+    list-style-type: none;
+}
+
+.logout button {
+    display: flex;
+    position: absolute;
+    font-size: 18px;
+    right: 10px;
+    justify-content: center;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 11px;
+    border-radius: 5px;
+    background-color: green;
+    transition: 0.25s;
+}
+
+.logout button:hover {
+    background-color: white;
+    cursor: pointer;
+    color: green;
+}
+
+.logout h5 {
+    display: flex;
+    position: absolute;
+    right: 250px;
+    margin: 0px;
+}
+
+.logout {
+
+    margin: 20px auto;
+    list-style-type: none;
+}
+
+.message li {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 1px solid rgb(3, 186, 3);
+    border-radius: 5px;
+    background-color: rgba(3, 186, 3, 0.795);
+    color: #fff;
+    font-size: 18px;
+    animation-name: message;
+    animation-duration: 1s;
+    position: relative;
+    animation-iteration-count: 1;
+    height: 23px;
+    width: 50%;
+    padding: 3px;
+    list-style-type: none;
+
+}
+
+@keyframes message {
+    from {
+        height: 0px;
+    }
+
+    to {
+        height: 23px;
+    }
+}
+
+.message {
+    padding: 0px;
+    margin: 0px;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    opacity: 0;
+}
+th{
+    background-color:#04AA6D;
+    color:white;
+}
+.datatable th{
+    background-color:#04AA6D;
+    color:white;
+}
+td {
+    margin: 55px;
+    padding: 6px;
+    text-align: center;
+}
+table,td,th{
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+}
+.container table:nth-child(even){
+    width: 50%;
+}
+tr:nth-child(even){
+    background-color: rgb(225, 223, 223);
+}
+
+.container table,.container td, .container th{
+    border: 0px;
+    text-align: left;
+    border-collapse: collapse;
+}
+.container tr:nth-child(even){
+    background-color:white;   
+}
+
+
+input {
+    width: 95%;
+}
+
+select {
+    width: 100%;
+}
+
+input,
+select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.container {
+    background-color: white;
+    box-shadow: 0px 0px 8px 3px #b6b1b1;
+    /* border: 1px solid red; */
+    margin: 50px auto;
+    padding: 50px;
+    width: 50%;
+
+}
+.container h3{
+    margin: 0px;
+}
+
+.submit {
+    width: 70%;
+    padding: 5px;
+    background-color: green;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: 0.25s;
+}
+
+.clear {
+    width: 50%;
+    padding: 5px;
+    font-size: 18px;
+    border: 0;
+    border-radius: 5px;
+    transition: 0.25s;
+}
+
+.submit:hover {
+    cursor: pointer;
+    background-color: rgba(1, 163, 1, 0.74);
+}
+
+.clear:hover {
+    cursor: pointer;
+    background-color: #ccc;
+}
+
+.main{
+    background-color:white;
+    padding: 10px;
+    width: 90%;
+    margin: 10px auto;
+    box-shadow: 0px 0px 8px 3px #b6b1b1;
+}
+
+.datatable{
+    width: 100%;
+}
+
+.history{
+    width: 100%;
+    align-items:center;
+}

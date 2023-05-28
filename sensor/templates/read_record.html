@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="{% static 'update_records.css' %}"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <title>Update Daily Records</title>
+</head>
+<style>
+    input, select{
+        margin: 10px;
+    }
+</style>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <!-- Container wrapper -->
+        <div class="container">
+            <a class="navbar-brand me-2" href="/">AgroNet System 
+            
+            </a>
+
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/108px-Hamburger_icon.svg.png"
+      height="16"
+      alt="MDB Logo"
+      loading="lazy"
+      style="margin-top: -1px;"
+    />
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                <!-- Left links -->
+
+                <div class="d-flex align-items-center">
+                    <a href="{% url 'Dashboard' %}"><button class="btn btn-link px-3 me-2">Register Device</button></a>
+                    <a href="{% url 'DailyRecords' %}"><button class="btn btn-link px-3 me-2">Update Records</button></a>
+                    <a href="{% url 'Reports' %}"><button class="btn btn-link px-3 me-2">Reports</button></a>
+                    <a href="{% url 'charts' %}"><button class="btn btn-link px-3 me-2">Charts</button></a>
+                    <a href="{% url 'logoutuser' %}"><button class="btn btn-link px-3 me-2">Sign Out</button></a>
+
+                </div>
+            </div>
+            <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+
+    <div class="container" style="margin:30px auto; width: 50%;border: 1px solid rgb(191, 184, 184); border-radius: 10px;padding: 20px;">
+        <h3>Update Daily Records</h3>
+        {% if messages %}
+        <ul class="alert alert-success" role="alert">
+            {% for message in messages %}
+            <li> {{ message }}</li>
+        </ul>
+
+        {% endfor %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <table border="0">
+                <tr>
+                    <td>Plot ID </td>
+                    <td></td>
+                    <td><select class="form-control" name="select_plotid" id="select_plotid">
+                            {% for i in '123456789'|make_list %}
+                                <option value="/DailyRecords?param={{forloop.counter}}" {% if num == i %} selected {% endif %}>{{ forloop.counter }}</option>
+
+                                {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Plant Name </td>
+                    <td></td>
+                    <td><select class="form-control" name="select_plant_name" id="select_plant_name">
+                            {% for dat in data %}
+                            <option value="{{dat.plant_name}}">{{dat.plant_name}}</option>
+                            {% endfor %}
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>Sensor/Parameter Value</td>
+                    <td></td>
+                    <td><input class="form-control" type="number" name="sensor_value" id="sensor_value" required></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-primary" type="submit" class="submit">Submit</button></td>
+                    <td></td>
+                    <td><button class="btn btn-secondary" type="reset" class="clear">Reset</button></td>
+            </table>
+                        
+        </form>
+    </div>
+
+
+</body>
+<script>
+    $(function () {
+        $('#select_plotid').on('change', function () {
+            var url = $(this).val();
+            if (url) {
+                window.location = url;
+            }
+            return false;
+        });
+    });
+</script>
+
+</html>
