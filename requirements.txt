@@ -5,3 +5,4 @@ whitenoise==6.4.0
 firebase-admin==6.1.0
 db-sqlite3
 mysql-client
+python-mysqldb
