@@ -16,7 +16,7 @@ class ServiceWorker(TemplateView):
     template_name = "templates/sw.js"
     content_type = "application/javascript"
 
-cred = credentials.Certificate("D:\program1\serviceKey.json")
+cred = credentials.Certificate("serviceKey.json")
 
 
 firebase_admin.initialize_app(cred, {
