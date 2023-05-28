@@ -6,3 +6,4 @@ firebase-admin==6.1.0
 db-sqlite3
 mysql-client
 sqlite-devel
+libsqlite3-dev
