@@ -4,4 +4,4 @@ djangorestframework==3.14.0
 whitenoise==6.4.0
 firebase-admin==6.1.0
 db-sqlite3
-mysqlclient
+mysqlclient==2.1.1
