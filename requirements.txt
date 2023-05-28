@@ -1,3 +1,4 @@
 Django==4.0.5
 django-pwa==1.1.0
 djangorestframework==3.14.0
+whitenoise==6.4.0
