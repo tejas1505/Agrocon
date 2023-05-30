@@ -3,4 +3,4 @@ django-pwa==1.1.0
 djangorestframework==3.14.0
 whitenoise==6.4.0
 firebase-admin==6.1.0
-_sqlite3
+sqlite3
