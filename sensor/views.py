@@ -26,7 +26,19 @@ firebase_admin.initialize_app(cred, {
 def homepage(request):
     return render(request, 'Homepage.html')
 
+def register_user(request):
+    if request.method == 'POST':
+        username1 = request.POST.get('username')
+        email1 = request.POST.get('email')
+        password1 = request.POST.get('password')
 
+        user = User.objects.create_user(username=username1, email=email1, password=password1, is_superuser=True)
+        # Additional fields and save() if needed
+        # user.save()
+
+        return user
+
+    return render(request, 'register.html')
 def userlogin(request):
     if request.method == 'POST':
         username1 = request.POST.get('login_username')
