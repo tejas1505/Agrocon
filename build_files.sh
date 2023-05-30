@@ -3,5 +3,5 @@
  python3.9 manage.py collectstatic --noinput --clear
  python3.9 manage.py makemigrations
  python3.9 manage.py migrate
- python3.9 manage.py createsuperuser --username=apcoer --email=admin@example.comt --noinput
+ python3.9 manage.py createsuperuser --username=apcoer1 --email=admi1n@example.comt --noinput
  echo "BUILD END"
