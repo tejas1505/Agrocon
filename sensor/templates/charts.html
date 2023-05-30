@@ -24,40 +24,32 @@
 </style>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-        <!-- Container wrapper -->
-        <div class="container">
-            <a class="navbar-brand me-2" href="/">AgroNet System
-
-            </a>
-
-            <!-- Toggle button -->
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-                data-mdb-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/108px-Hamburger_icon.svg.png"
-                    height="16" alt="MDB Logo" loading="lazy" style="margin-top: -1px;" />
-            </button>
-
-            <!-- Collapsible wrapper -->
-            <div class="collapse navbar-collapse" id="navbarButtonsExample">
-                <!-- Left links -->
-
-                <div class="d-flex align-items-center">
-                    <a href="{% url 'Dashboard' %}"><button class="btn btn-link px-3 me-2">Register Device</button></a>
-                    <a href="{% url 'DailyRecords' %}"><button class="btn btn-link px-3 me-2">Update
-                            Records</button></a>
-                    <a href="{% url 'Reports' %}"><button class="btn btn-link px-3 me-2">Reports</button></a>
-                    <a href="{% url 'charts' %}"><button class="btn btn-link px-3 me-2">Charts</button></a>
-                    <a href="{% url 'logoutuser' %}"><button class="btn btn-link px-3 me-2">Sign Out</button></a>
-
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">AgroNet System</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/108px-Hamburger_icon.svg.png"
+          height="16" alt="MDB Logo" loading="lazy" style="margin-top: -1px;" />
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link" href="{% url 'Dashboard' %}"><button class="btn btn-tertiary">Register Device</button></a>
+              <a class="nav-link" href="{% url 'DailyRecords' %}"><button class="btn btn-tertiary">Update Records</button></a>
+              <a class="nav-link" href="{% url 'Reports' %}"><button class="btn btn-tertiary">Reports</button></a>
+              <a class="nav-link" href="{% url 'charts' %}"><button class="btn btn-tertiary">Charts</button></a>
+              <a class="nav-link" href="{% url 'logoutuser' %}"><button class="btn btn-tertiary">Sign Out</button></a>
             </div>
-            <!-- Collapsible wrapper -->
+          </div>
         </div>
-        <!-- Container wrapper -->
-    </nav>
+      </nav>
     <div class="soil_moisture">
         <div>
             <h2 class="mb-3">Soil Moisture</h2>
@@ -103,7 +95,6 @@
             }
 
         })
-        // console.log(data.temperature)
     }
     
     setInterval(() => {
