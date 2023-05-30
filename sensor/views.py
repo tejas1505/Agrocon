@@ -26,6 +26,7 @@ firebase_admin.initialize_app(cred, {
 def homepage(request):
     return render(request, 'Homepage.html')
 
+from django.contrib.auth.models import User
 def register_user(request):
     if request.method == 'POST':
         username1 = request.POST.get('username')
