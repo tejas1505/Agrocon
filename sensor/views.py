@@ -47,12 +47,12 @@ def userlogin(request):
         return render(request, 'Login.html')
     return render(request, 'Login.html')
 
-@login_required
+# @login_required
 def home(request):
 
     return render(request, 'home.html')
 
-@login_required
+# @login_required
 def Dashboard(request):
     #     return render(request, 'Dashboard.html')
     all2 = sensor_register.objects.all()
