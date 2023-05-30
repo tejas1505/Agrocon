@@ -60,7 +60,7 @@ def userlogin(request):
         return render(request, 'Login.html')
     return render(request, 'Login.html')
 
-# @login_required
+@login_required
 def home(request):
 
     return render(request, 'home.html')
@@ -99,7 +99,7 @@ def Dashboard(request):
             messages.error(request, "Invalid details")
     return render(request, 'Dashboard.html')
 
-# @login_required
+@login_required
 def daily_records(request):
     context = {}
 
@@ -130,7 +130,7 @@ def daily_records(request):
 
     return render(request, 'read_record.html', context)
 
-# @login_required
+@login_required
 def Reports(request):
     context = {}
     data = sensor_register.objects.all()
@@ -154,12 +154,12 @@ def Reports(request):
     context['sensors'] = data
     return render(request, 'Reports.html', context)
 
-# @login_required
+@login_required
 def logoutuser(request):
     logout(request)
     return redirect('homepage')
 
-# @login_required
+@login_required
 def charts(request):
 
     firebase_admin.get_app()
@@ -169,7 +169,7 @@ def charts(request):
     print(data)
     return render(request, 'charts.html',data)
     
-# @login_required
+@login_required
 def chartsData(request):
 
     firebase_admin.get_app()
