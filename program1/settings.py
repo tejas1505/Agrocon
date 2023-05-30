@@ -86,6 +86,16 @@ WSGI_APPLICATION = 'program1.wsgi.application'
 #     }
 # }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': 'n8LfelsH7uSc',
+        'HOST': 'ep-round-union-011869-pooler.us-east-1.postgres.vercel-storage.com',
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation
