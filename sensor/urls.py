@@ -14,6 +14,7 @@ urlpatterns = [
     path("Reports/", views.Reports, name="Reports"),
     path("logout/", views.logoutuser, name="logoutuser"),
     path("charts/", views.charts, name="charts"),
+    path("register/", views.register_user, name="register"),
     path("chartsData/", views.chartsData, name="chartsData"),
     path('', ServiceWorker.as_view(), name="sw"),
 ]
