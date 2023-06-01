@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="{% static 'dashboard.css' %}"> -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.css" rel="stylesheet" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
     <title>Dashboard</title>
     <style>
@@ -19,117 +18,96 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">AgroNet System</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-mdb-toggle="collapse"
-            data-mdb-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/108px-Hamburger_icon.svg.png"
-          height="16" alt="MDB Logo" loading="lazy" style="margin-top: -1px;" />
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ms-auto">
-              <a class="nav-link" href="{% url 'Dashboard' %}"><button class="btn btn-tertiary">Register Device</button></a>
-              <a class="nav-link" href="{% url 'DailyRecords' %}"><button class="btn btn-tertiary">Update Records</button></a>
-              <a class="nav-link" href="{% url 'Reports' %}"><button class="btn btn-tertiary">Reports</button></a>
-              <a class="nav-link" href="{% url 'charts' %}"><button class="btn btn-tertiary">Charts</button></a>
-              <a class="nav-link" href="{% url 'logoutuser' %}"><button class="btn btn-tertiary">Sign Out</button></a>
+            <a class="navbar-brand" href="/">AgroNet System</a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/108px-Hamburger_icon.svg.png"
+                    height="16" alt="MDB Logo" loading="lazy" style="margin-top: -1px;" />
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="{% url 'Dashboard' %}"><button class="btn btn-tertiary">Register
+                            Device</button></a>
+                    <a class="nav-link" href="{% url 'DailyRecords' %}"><button class="btn btn-tertiary">Update
+                            Records</button></a>
+                    <a class="nav-link" href="{% url 'Reports' %}"><button class="btn btn-tertiary">Reports</button></a>
+                    <a class="nav-link" href="{% url 'charts' %}"><button class="btn btn-tertiary">Charts</button></a>
+                    <a class="nav-link" href="{% url 'logoutuser' %}"><button class="btn btn-tertiary">Sign
+                            Out</button></a>
+                </div>
             </div>
-          </div>
         </div>
-      </nav>
-    <div class="container"
-        style="margin:30px auto; width: 50%;border: 1px solid rgb(191, 184, 184); border-radius: 10px;padding: 20px;">
-        <h3>Device Registration</h3>
-        {% if messages %}
-        <ul class="alert alert-success" role="alert">
-            {% for message in messages %}
-            <li id="message"> {{ message }}</li>
-        </ul>
+    </nav>
+    <!-- <div class="container" style="margin:30px auto; width: 50%;border: 1px solid rgb(191, 184, 184); border-radius: 10px;padding: 20px;"> -->
+    <h3>Device Registration</h3>
+    {% if messages %}
+    <ul class="alert alert-success" role="alert">
+        {% for message in messages %}
+        <li id="message"> {{ message }}</li>
+    </ul>
 
-        {% endfor %}
-        {% endif %}
-        <form method="POST" class="form">
-            {% csrf_token %}
-            <table>
-                <tr>
-                    <td>Device No. </td>
-                    <td><input class="form-control" type="number" name="dev_num" id="dev_num" required></td>
-                </tr>
-                <!-- <span>Register No. <input type="number" name="reg_num" id="reg_num"></span> -->
-                <tr>
-                    <td>Location :
-                    <td><input class="form-control" type="text" name="longi" id="longi" placeholder="Longitude"
-                            autocomplete="off" required>
-                    </td>
-                    </td>
-                    <td><input class="form-control" type="text" name="lat" id="lat" placeholder="Latitude"
-                            autocomplete="off" required></td>
-                </tr>
-                <!-- <tr>
-                    <td>Date : </td>
-                    <td><input type="date" name="date" id="date"></td>
-                </tr>
-
-                <tr>
-                    <td>Time : </td>
-                    <td><input type="time" name="time" id="time"></td>
-                </tr> -->
-                <tr>
-                    <td>Sensor Type : </td>
-                    <td><select class="form-control" name="sensor_type" id="sensor_type" required>
-                            <option selected>--Select Sensor Type--</option>
-                            <option>Temperature Sensor</option>
-                            <option>Humidity Sensor</option>
-                            <option>Position Sensor</option>
-                            <option>Photo Optic Sensor</option>
-                            <option>Electrochemical Sensor</option>
-                            <option>Light Sensor</option>
-                            <option>Dielectric Soil Moisture Sensor</option>
-                            <option>Location Sensor</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Measurment Unit </td>
-                    <td><input class="form-control" type="text" name="measure" id="measure" autocomplete="off" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Plant Name </td>
-                    <td><input class="form-control" type="text" name="plant_name" id="plant_name" autocomplete="off"
-                            required></td>
-                </tr>
-                <tr>
-                    <td>Plot Id </td>
-                    <td><select class="form-control" name="plotid" id="plotid" required>
-                            <option value="" selected>--Select Plot ID--</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                        </select></td>
-                </tr>
-                <tr>
-                    <td>Crop </td>
-                    <td><input class="form-control" type="text" name="crop" id="crop" autocomplete="off" required></td>
-                </tr>
-                <tr>
-                    <td><button type="submit" class="btn btn-primary" onclick="delay()">Submit</button></td>
-                    <td><button type="reset" class="btn btn-secondary">Clear</button></td>
-            </table>
-        </form>
-    </div>
+    {% endfor %}
+    {% endif %}
+    <form class="form-control" method="post">
+        {% csrf_token %}
+        <div class="container">
+            <div class="form-group">
+                <label for="usr" class="g-col-6">Device No.</label>
+                <input type="number" class="form-control g-col-6" id="usr" name="dev_num">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Location</label>
+                <input type="text" class="form-control" id="pwd" placeholder="Longitude" name="longi">
+                <input type="text" class="form-control" id="pwd" placeholder="Latitude" name="lat">
+            </div>
+            <div class="form-group">
+                <label for="sensor_type">Sensor Type </label>
+                <select class="select form-control" name="sensor_type" id="sensor_type" required>
+                    <option selected>--Select Sensor Type--</option>
+                    <option>Temperature Sensor</option>
+                    <option>Humidity Sensor</option>
+                    <option>Position Sensor</option>
+                    <option>Photo Optic Sensor</option>
+                    <option>Electrochemical Sensor</option>
+                    <option>Light Sensor</option>
+                    <option>Dielectric Soil Moisture Sensor</option>
+                    <option>Location Sensor</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Measurment">Measurment Unit</label>
+                <input type="text" class="form-control" id="Measurment" name="measure">
+            </div>
+            <div class="form-group">
+                <label for="plant_name">Plant Name</label>
+                <input type="text" class="form-control" id="plant_name" name="plant_name">
+            </div>
+            <div class="form-group">
+                <label for="plotid">Plot ID</label>
+                <select class="form-control" name="plotid" id="plotid" required>
+                    <option value="" selected>--Select Plot ID--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select></td>
+            </div>
+            <div class="form-group">
+                <label for="crop">Crop</label>
+                <input type="text" class="form-control" id="crop" name="crop">
+            </div>
+        <div class="container-fluid my-4">
+            <button type="submit" class="btn btn-primary" onclick="delay()">Submit</button>
+        <button type="reset" class="btn btn-secondary">Clear</button>
+        </div>
+        </div>
+    </form>
     <script>
         function delay() {
             setTimeout(5000)
