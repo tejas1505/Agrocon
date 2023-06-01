@@ -8,7 +8,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Chart</title>
 </head>
 <style>
@@ -26,35 +27,32 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">AgroNet System</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-mdb-toggle="collapse"
-            data-mdb-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/108px-Hamburger_icon.svg.png"
-          height="16" alt="MDB Logo" loading="lazy" style="margin-top: -1px;" />
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ms-auto">
-              <a class="nav-link" href="{% url 'Dashboard' %}"><button class="btn btn-tertiary">Register Device</button></a>
-              <a class="nav-link" href="{% url 'DailyRecords' %}"><button class="btn btn-tertiary">Update Records</button></a>
-              <a class="nav-link" href="{% url 'Reports' %}"><button class="btn btn-tertiary">Reports</button></a>
-              <a class="nav-link" href="{% url 'charts' %}"><button class="btn btn-tertiary">Charts</button></a>
-              <a class="nav-link" href="{% url 'logoutuser' %}"><button class="btn btn-tertiary">Sign Out</button></a>
+            <a class="navbar-brand" href="/">AgroNet System</a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/108px-Hamburger_icon.svg.png"
+                    height="16" alt="MDB Logo" loading="lazy" style="margin-top: -1px;" />
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="{% url 'Dashboard' %}"><button class="btn btn-tertiary">Register
+                            Device</button></a>
+                    <a class="nav-link" href="{% url 'DailyRecords' %}"><button class="btn btn-tertiary">Update
+                            Records</button></a>
+                    <a class="nav-link" href="{% url 'Reports' %}"><button class="btn btn-tertiary">Reports</button></a>
+                    <a class="nav-link" href="{% url 'charts' %}"><button class="btn btn-tertiary">Charts</button></a>
+                    <a class="nav-link" href="{% url 'logoutuser' %}"><button class="btn btn-tertiary">Sign
+                            Out</button></a>
+                </div>
             </div>
-          </div>
         </div>
-      </nav>
+    </nav>
     <div class="soil_moisture">
         <div>
             <h2 class="mb-3">Soil Moisture</h2>
             <canvas id="myChart"></canvas>
-            <h1 id="soil_moisture">Current Value : {{ soil_moisture }}/h1>
+            <h1 id="soil_moisture">Current Value : {{ soil_moisture }}</h1>
         </div>
     </div>
     <div class="soil_moisture">
@@ -73,56 +71,39 @@
     </div>
 </body>
 <script>
-    var array_soil_moisture = [0, 70, 65, 50, 60, 77, 83, 34, 21, 17]
-    var array_temperature = [45.3, 44.2, 44.2, 44.2, 35.0, 34.6, 35.0, 35.0, 44.0, 44.0]
+    var array_soil_moisture = []
+    var array_temperature = []
     var array_humidity = []
+    function update_data(arr, chart, data) {
+        if (arr.length > 10) {
+                arr.shift()
+            }
+            chart.data.datasets.forEach((dataset) => {
+                dataset.data.push(data);
+            });
+            chart.update();
+    }
     function fetch_API() {
         var data = fetch("/chartsData/").then(x => x.json()).then(y => {
             console.log(y.temperature)
-            // array_soil_moisture.push(y.soil_moisture);
-            // array_temperature.push(y.temperature);
-            // array_humidity.push(y.humidity);
-            // if (array_humidity.length>=10) {
-            //     array_humidity.shift()
-            //     console.log("In if" + array_humidity)
-            // }
             document.getElementById('soil_moisture').innerHTML = `Current Value : ${y.soil_moisture}`;
             document.getElementById('temperature').innerHTML = `Current Value : ${y.temperature}`;
             document.getElementById('humidity').innerHTML = `Current Value : ${y.humidity}`;
-            array_humidity.push(y.humidity)
-            if (array_humidity.length>5) {
-                array_humidity.shift()
-            }
+            
+            update_data(array_soil_moisture, chart1, y.soil_moisture)
+            update_data(array_temperature, chart2, y.temperature)
+            update_data(array_humidity, chart3, y.humidity)
 
         })
     }
-    
+
     setInterval(() => {
         fetch_API();
         console.log("Humidity " + array_humidity)
     }, 5000);
-    // function updateChart() {
-    //     // Make an AJAX request to your Django API endpoint
-    //     $.ajax({
-    //         url: '/chartsData/',  // Replace with your actual API endpoint URL
-    //         method: 'GET',
-    //         success: function (response) {
-    //             // Process the response and update the chart data
-    //             var newData = response.data;
-    //             myChart.data.datasets[0].data = newData;
-    //             myChart.update();  // Update the chart with new data
-    //         },
-    //         error: function (error) {
-    //             console.log(error);
-    //         }
-    //     });
-    // }
-
-    // Update the chart every 5 seconds
-    // setInterval(updateChart, 5000);
     const xValues = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
-    new Chart("myChart", {
+    var chart1 = new Chart("myChart", {
         type: "line",
         data: {
             labels: xValues,
@@ -140,9 +121,9 @@
     });
 
 
-    new Chart("myChart1", {
+    var chart2 = new Chart("myChart1", {
         type: "line",
-        
+
         data: {
             labels: xValues,
             datasets: [{
@@ -157,7 +138,7 @@
             legend: { display: false },
         }
     });
-    new Chart("myChart2", {
+    var chart3 = new Chart("myChart2", {
         type: "line",
         data: {
             labels: xValues,
@@ -173,6 +154,8 @@
             legend: { display: false },
         }
     });
+
+
 </script>
 <script type="module">
     // Import the functions you need from the SDKs you need
