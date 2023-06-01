@@ -4,11 +4,10 @@
 <head>{% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Reports</title>
 </head>
 <style>
@@ -46,13 +45,13 @@
             </div>
         </div>
     </nav>
+
     <div class="container"
         style="margin:30px auto; width: 50%;border: 1px solid rgb(191, 184, 184); border-radius: 10px;padding: 20px;">
         <h3>Reports</h3>
         <table>
             <tr>
                 <td>Plot ID </td>
-                <!-- <td></td> -->
                 <td><select class="form-control" name="display_plotid" id="display_plotid">
                         <option>--Select Plot ID--</option>
                         {% for i in '123456789'|make_list %}
@@ -72,20 +71,20 @@
             </tr>
         </table>
     </div>
-    <div class="main">
+    <div class="table-responsive">
         <table class="table" border="0" cellspacing="2">
             <tr>
-                <th>Register No</th>
-                <th>Device No</th>
-                <th>Plot ID</th>
-                <th>Plant Name</th>
-                <th>Crop</th>
-                <th>Sensor Type</th>
-                <th>Mesurement</th>
-                <th>Longitude</th>
-                <th>Latitude</th>
-                <th>Registration Date</th>
-                <th>Registration Time</th>
+                <th scope="col">Register No</th>
+                <th scope="col">Device No</th>
+                <th scope="col">Plot ID</th>
+                <th scope="col">Plant Name</th>
+                <th scope="col">Crop</th>
+                <th scope="col">Sensor Type</th>
+                <th scope="col">Mesurement</th>
+                <th scope="col">Longitude</th>
+                <th scope="col">Latitude</th>
+                <th scope="col">Registration Date</th>
+                <th scope="col">Registration Time</th>
             </tr>
             {% for i in sensors %}
             <tr>
