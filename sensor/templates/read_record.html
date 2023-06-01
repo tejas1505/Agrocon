@@ -6,11 +6,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="{% static 'update_records.css' %}"> -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Update Daily Records</title>
 </head>
 <style>
@@ -45,52 +44,42 @@
         </div>
     </nav>
 
-    <div class="container"
-        style="margin:30px auto; width: 50%;border: 1px solid rgb(191, 184, 184); border-radius: 10px;padding: 20px;">
-        <h3>Update Daily Records</h3>
-        {% if messages %}
-        <ul class="alert alert-success" role="alert">
-            {% for message in messages %}
-            <li> {{ message }}</li>
-        </ul>
+    <h3>Update Daily Records</h3>
+    {% if messages %}
+    <ul class="alert alert-success" role="alert">
+        {% for message in messages %}
+        <li> {{ message }}</li>
+    </ul>
 
-        {% endfor %}
-        {% endif %}
-        <form method="POST">
-            {% csrf_token %}
-            <table border="0">
-                <tr>
-                    <td>Plot ID </td>
-                    <td></td>
-                    <td><select class="form-control" name="select_plotid" id="select_plotid">
-                            {% for i in '123456789'|make_list %}
-                            <option value="/DailyRecords?param={{forloop.counter}}" {% if num == i %} selected {% endif%}>{{ forloop.counter }}</option>
-                            {% endfor %}
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Plant Name </td>
-                    <td></td>
-                    <td><select class="form-control" name="select_plant_name" id="select_plant_name">
-                            {% for dat in data %}
-                            <option value="{{dat.plant_name}}">{{dat.plant_name}}</option>
-                            {% endfor %}
-                        </select></td>
-                </tr>
-                <tr>
-                    <td>Sensor/Parameter Value</td>
-                    <td></td>
-                    <td><input class="form-control" type="number" name="sensor_value" id="sensor_value" required></td>
-                </tr>
-                <tr>
-                    <td><button class="btn btn-primary" type="submit" class="submit">Submit</button></td>
-                    <td></td>
-                    <td><button class="btn btn-secondary" type="reset" class="clear">Reset</button></td>
-            </table>
-
-        </form>
-    </div>
+    {% endfor %}
+    {% endif %}
+    <form method="post" class="form-control">
+        {% csrf_token %}
+        <div class="container"
+            style="margin:30px auto; width: 50%;border: 1px solid rgb(191, 184, 184); border-radius: 10px;padding: 20px;">
+            <div class="form-group">
+                <label for="usr" class="g-col-6">Plot ID</label>
+                <select class="form-control" name="select_plotid" id="select_plotid">
+                    {% for i in '123456789'|make_list %}
+                    <option value="/DailyRecords?param={{forloop.counter}}" {% if num == i %} selected {% endif%}>
+                        {{ forloop.counter }}</option>
+                    {% endfor %}
+                </select>
+                <label for="usr" class="g-col-6">Plant Name</label>
+                <select class="form-control" name="select_plant_name" id="select_plant_name">
+                    {% for dat in data %}
+                    <option value="{{dat.plant_name}}">{{dat.plant_name}}</option>
+                    {% endfor %}
+                </select>
+                <label for="usr" class="g-col-6">Sensor/Parameter Value</label>
+                <input type="number" class="form-control" id="usr" name="sensor_value">
+            </div>
+            <div class="container-fluid my-4">
+                <button type="submit" class="btn btn-primary" onclick="delay()">Submit</button>
+                <button type="reset" class="btn btn-secondary">Clear</button>
+            </div>
+        </div>
+    </form>
 
 
 </body>
